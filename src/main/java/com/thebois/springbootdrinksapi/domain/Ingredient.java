@@ -5,6 +5,12 @@ import javax.persistence.*;
 import static javax.persistence.GenerationType.SEQUENCE;
 
 @Entity
+@Table(
+        name = "ingredient",
+        uniqueConstraints = {
+                @UniqueConstraint(name = "ingredient_name_unique", columnNames = "name")
+        }
+)
 public class Ingredient {
     @Id
     @SequenceGenerator(
