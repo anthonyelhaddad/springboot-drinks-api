@@ -80,7 +80,7 @@ public class Drink {
         return videoUrl;
     }
 
-    public boolean isAlcoholic() {
+    public boolean getIsAlcoholic() {
         return isAlcoholic;
     }
 
@@ -100,7 +100,7 @@ public class Drink {
         this.videoUrl = videoUrl;
     }
 
-    public void setAlcoholic(boolean alcoholic) {
+    public void setIsAlcoholic(boolean alcoholic) {
         isAlcoholic = alcoholic;
     }
 
