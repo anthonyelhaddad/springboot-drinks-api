@@ -1,10 +1,21 @@
 package com.thebois.springbootdrinksapi.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static javax.persistence.GenerationType.SEQUENCE;
 
 @Entity
+@Table(
+        name = "drink",
+        uniqueConstraints = {
+                @UniqueConstraint(name = "drink_name_unique", columnNames = "name")
+        }
+)
 public class Drink {
     @Id
     @SequenceGenerator(
@@ -51,6 +62,13 @@ public class Drink {
             columnDefinition = "TEXT"
     )
     private String instructions;
+
+    @OneToMany(
+            cascade = {CascadeType.PERSIST},
+            mappedBy = "drink"
+    )
+    @JsonIgnore
+    private List<DrinkIngredient> drinkIngredients = new ArrayList<>();
 
     public Drink() {
 
@@ -106,6 +124,20 @@ public class Drink {
 
     public void setInstructions(String instructions) {
         this.instructions = instructions;
+    }
+
+    public List<DrinkIngredient> getDrinkIngredients() {
+        return drinkIngredients;
+    }
+
+    public void setDrinkIngredients(List<DrinkIngredient> drinkIngredients) {
+        this.drinkIngredients = drinkIngredients;
+    }
+
+    public void addIngredient(DrinkIngredient drinkIngredient) {
+        if (!drinkIngredients.contains(drinkIngredient)) {
+            drinkIngredients.add(drinkIngredient);
+        }
     }
 
     @Override

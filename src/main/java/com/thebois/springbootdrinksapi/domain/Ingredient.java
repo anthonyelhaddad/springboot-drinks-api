@@ -1,6 +1,11 @@
 package com.thebois.springbootdrinksapi.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static javax.persistence.GenerationType.SEQUENCE;
 
@@ -46,12 +51,15 @@ public class Ingredient {
     )
     private String type;
 
+    @OneToMany(
+            cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
+            mappedBy = "ingredient"
+    )
+    @JsonIgnore
+    private List<DrinkIngredient> drinkIngredients = new ArrayList<>();
+
     public Ingredient() {
 
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public Ingredient(String name, String description, String type) {
@@ -86,6 +94,14 @@ public class Ingredient {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public List<DrinkIngredient> getDrinkIngredients() {
+        return drinkIngredients;
+    }
+
+    public void setDrinkIngredients(List<DrinkIngredient> drinkIngredients) {
+        this.drinkIngredients = drinkIngredients;
     }
 
     @Override
