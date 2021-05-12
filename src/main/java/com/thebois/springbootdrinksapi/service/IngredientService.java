@@ -2,6 +2,7 @@ package com.thebois.springbootdrinksapi.service;
 
 import com.thebois.springbootdrinksapi.dao.jpa.IngredientRepository;
 import com.thebois.springbootdrinksapi.domain.Ingredient;
+import com.thebois.springbootdrinksapi.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,5 +28,10 @@ public class IngredientService {
             throw new IllegalStateException("Ingredient with this name already exists");
         }
         ingredientRepository.save(ingredient);
+    }
+
+    public Ingredient getIngredientById(Long id) {
+        return ingredientRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Ingredient not found"));
     }
 }

@@ -1,5 +1,6 @@
 package com.thebois.springbootdrinksapi.api.rest;
 
+import com.thebois.springbootdrinksapi.domain.Drink;
 import com.thebois.springbootdrinksapi.domain.Ingredient;
 import com.thebois.springbootdrinksapi.service.IngredientService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,6 @@ public class IngredientController extends AbstractRestHandler {
         this.ingredientService = ingredientService;
     }
 
-
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public List<Ingredient> getAllIngredients() {
@@ -31,5 +31,10 @@ public class IngredientController extends AbstractRestHandler {
     @ResponseStatus(HttpStatus.CREATED)
     public void addIngredient(@RequestBody Ingredient ingredient) {
         ingredientService.addIngredient(ingredient);
+    }
+
+    @GetMapping(path = "{ingredientId}")
+    public Ingredient getIngredient(@PathVariable("ingredientId") Long id) {
+        return ingredientService.getIngredientById(id);
     }
 }
