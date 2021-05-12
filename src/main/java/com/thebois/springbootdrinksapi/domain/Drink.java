@@ -1,5 +1,7 @@
 package com.thebois.springbootdrinksapi.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 import java.util.ArrayList;
@@ -65,6 +67,7 @@ public class Drink {
             cascade = {CascadeType.PERSIST},
             mappedBy = "drink"
     )
+    @JsonIgnore
     private List<DrinkIngredient> drinkIngredients = new ArrayList<>();
 
     public Drink() {

@@ -1,5 +1,8 @@
 package com.thebois.springbootdrinksapi.domain;
 
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -13,6 +16,7 @@ public class DrinkIngredient {
             name = "drink_id",
             foreignKey = @ForeignKey(name = "drink_id_fk")
     )
+    @JsonIgnore
     private Drink drink;
 
     @ManyToOne
@@ -21,6 +25,7 @@ public class DrinkIngredient {
             name = "ingredient_id",
             foreignKey = @ForeignKey(name = "ingredient_id_fk")
     )
+    @JsonIgnore
     private Ingredient ingredient;
 
     @Column(
