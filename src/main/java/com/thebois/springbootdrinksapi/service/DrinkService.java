@@ -2,9 +2,9 @@ package com.thebois.springbootdrinksapi.service;
 
 import com.thebois.springbootdrinksapi.dao.jpa.DrinkRepository;
 import com.thebois.springbootdrinksapi.dao.jpa.IngredientRepository;
-import com.thebois.springbootdrinksapi.domain.Drink;
+import com.thebois.springbootdrinksapi.domain.drink.Drink;
 import com.thebois.springbootdrinksapi.domain.DrinkIngredient;
-import com.thebois.springbootdrinksapi.domain.Ingredient;
+import com.thebois.springbootdrinksapi.domain.ingredient.Ingredient;
 import com.thebois.springbootdrinksapi.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

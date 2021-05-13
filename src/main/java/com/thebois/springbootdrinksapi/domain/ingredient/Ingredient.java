@@ -1,6 +1,9 @@
-package com.thebois.springbootdrinksapi.domain;
+package com.thebois.springbootdrinksapi.domain.ingredient;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.thebois.springbootdrinksapi.api.rest.IngredientController;
+import com.thebois.springbootdrinksapi.domain.DrinkIngredient;
+import org.springframework.hateoas.RepresentationModel;
 
 import javax.persistence.*;
 
@@ -8,6 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static javax.persistence.GenerationType.SEQUENCE;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @Entity
 @Table(
@@ -16,7 +21,7 @@ import static javax.persistence.GenerationType.SEQUENCE;
                 @UniqueConstraint(name = "ingredient_name_unique", columnNames = "name")
         }
 )
-public class Ingredient {
+public class Ingredient extends RepresentationModel<Ingredient> {
     @Id
     @SequenceGenerator(
             name = "ingredient_sequence",
@@ -102,6 +107,14 @@ public class Ingredient {
 
     public void setDrinkIngredients(List<DrinkIngredient> drinkIngredients) {
         this.drinkIngredients = drinkIngredients;
+    }
+
+    public Ingredient addLinks() {
+        final Long id = getId();
+        add(linkTo(IngredientController.class).withRel("ingredients"));
+        add(linkTo(methodOn(IngredientController.class).getDrinks(id)).withRel("drinks"));
+        add(linkTo(methodOn(IngredientController.class).getIngredient(id)).withSelfRel());
+        return this;
     }
 
     @Override

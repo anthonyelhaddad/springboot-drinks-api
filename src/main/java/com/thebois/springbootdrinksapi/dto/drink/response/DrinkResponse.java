@@ -1,6 +1,6 @@
 package com.thebois.springbootdrinksapi.dto.drink.response;
 
-import com.thebois.springbootdrinksapi.domain.Drink;
+import com.thebois.springbootdrinksapi.domain.drink.Drink;
 import com.thebois.springbootdrinksapi.domain.DrinkIngredient;
 
 import java.io.Serializable;

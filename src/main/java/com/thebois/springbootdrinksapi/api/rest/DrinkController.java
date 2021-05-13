@@ -1,6 +1,6 @@
 package com.thebois.springbootdrinksapi.api.rest;
 
-import com.thebois.springbootdrinksapi.domain.Drink;
+import com.thebois.springbootdrinksapi.domain.drink.Drink;
 import com.thebois.springbootdrinksapi.dto.drink.response.DrinkResponse;
 import com.thebois.springbootdrinksapi.service.DrinkService;
 import io.swagger.annotations.ApiOperation;
@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import com.thebois.springbootdrinksapi.dto.drink.request.DrinkCreateRequest;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @RestController

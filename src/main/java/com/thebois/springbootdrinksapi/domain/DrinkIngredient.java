@@ -2,6 +2,8 @@ package com.thebois.springbootdrinksapi.domain;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.thebois.springbootdrinksapi.domain.drink.Drink;
+import com.thebois.springbootdrinksapi.domain.ingredient.Ingredient;
 
 import javax.persistence.*;
 

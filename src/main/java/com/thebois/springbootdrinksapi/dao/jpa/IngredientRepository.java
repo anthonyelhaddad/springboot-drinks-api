@@ -1,6 +1,6 @@
 package com.thebois.springbootdrinksapi.dao.jpa;
 
-import com.thebois.springbootdrinksapi.domain.Ingredient;
+import com.thebois.springbootdrinksapi.domain.ingredient.Ingredient;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
