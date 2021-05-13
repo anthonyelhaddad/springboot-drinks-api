@@ -24,32 +24,35 @@ public class IngredientController extends AbstractRestHandler {
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    @ApiOperation(value = "Returns a list of all Ingredients")
+    @ApiOperation(value = "Get all ingredients", notes = "Returns a list of all Ingredients.")
     public List<Ingredient> getAllIngredients() {
         return ingredientService.getAllIngredients();
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-    @ApiOperation(value = "Adds an Ingredient")
+    @ApiOperation(value = "Add an Ingredient")
     public void addIngredient(@RequestBody Ingredient ingredient) {
         ingredientService.addIngredient(ingredient);
     }
 
     @GetMapping(path = "{ingredientId}", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
+    @ApiOperation(value = "Get an Ingredient")
     public Ingredient getIngredient(@PathVariable("ingredientId") Long id) {
         return ingredientService.getIngredientById(id).addLinks();
     }
 
     @GetMapping(path = "{ingredientId}/drinks", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
+    @ApiOperation(value = "Get all the drinks that contain a specific ingredient", notes = "Returns a list of Ingredients")
     public List<Drink> getDrinks(@PathVariable("ingredientId") Long id) {
         return ingredientService.getDrinksForIngredient(id);
     }
 
     @DeleteMapping(path = "{ingredientId}")
     @ResponseStatus(HttpStatus.OK)
+    @ApiOperation(value = "Delete a drink")
     public void deleteDrinkById(@PathVariable("ingredientId") Long id){
         ingredientService.deleteIngredientById(id);
     }
