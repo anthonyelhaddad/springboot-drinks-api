@@ -13,7 +13,7 @@ import com.thebois.springbootdrinksapi.dto.drink.request.DrinkCreateRequest;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("api/v1/drinks")
 public class DrinkController extends AbstractRestHandler {
