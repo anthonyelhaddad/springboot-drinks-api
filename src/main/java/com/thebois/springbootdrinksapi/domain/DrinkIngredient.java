@@ -12,7 +12,7 @@ public class DrinkIngredient {
     @EmbeddedId
     private DrinkIngredientKey id;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     @MapsId("drinkId")
     @JoinColumn(
             name = "drink_id",
