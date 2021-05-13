@@ -45,4 +45,8 @@ public class DrinkController extends AbstractRestHandler {
         return new DrinkResponse(drink);
     }
 
+    @GetMapping(path = "search", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Drink> search(@RequestParam String q) {
+        return drinkService.search(q);
+    }
 }
