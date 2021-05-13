@@ -64,4 +64,8 @@ public class DrinkService {
     public List<Drink> search(String keyword) {
         return drinkRepository.search(keyword);
     }
+
+    public void deleteDrinkById(Long id){
+        drinkRepository.deleteById(id);
+    }
 }
