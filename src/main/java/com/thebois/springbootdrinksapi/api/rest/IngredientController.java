@@ -36,8 +36,13 @@ public class IngredientController extends AbstractRestHandler {
         ingredientService.addIngredient(ingredient);
     }
 
-    @GetMapping(path = "{ingredientId}")
+    @GetMapping(path = "{ingredientId}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Ingredient getIngredient(@PathVariable("ingredientId") Long id) {
         return ingredientService.getIngredientById(id);
+    }
+
+    @GetMapping(path = "{ingredientId}/drinks", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Drink> getDrinks(@PathVariable("ingredientId") Long id) {
+        return ingredientService.getDrinksForIngredient(id);
     }
 }

@@ -60,4 +60,8 @@ public class DrinkService {
         return drinkRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Drink not found"));
     }
+
+    public List<Drink> search(String keyword) {
+        return drinkRepository.search(keyword);
+    }
 }

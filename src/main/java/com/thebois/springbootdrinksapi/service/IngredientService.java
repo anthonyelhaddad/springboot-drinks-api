@@ -1,6 +1,8 @@
 package com.thebois.springbootdrinksapi.service;
 
 import com.thebois.springbootdrinksapi.dao.jpa.IngredientRepository;
+import com.thebois.springbootdrinksapi.domain.Drink;
+import com.thebois.springbootdrinksapi.domain.DrinkIngredient;
 import com.thebois.springbootdrinksapi.domain.Ingredient;
 import com.thebois.springbootdrinksapi.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class IngredientService {
@@ -33,5 +36,12 @@ public class IngredientService {
     public Ingredient getIngredientById(Long id) {
         return ingredientRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Ingredient not found"));
+    }
+
+    public List<Drink> getDrinksForIngredient(Long id) {
+        Ingredient ingredient = ingredientRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Ingredient not found"));
+        return ingredient.getDrinkIngredients()
+                .stream().map(DrinkIngredient::getDrink).collect(Collectors.toList());
     }
 }
