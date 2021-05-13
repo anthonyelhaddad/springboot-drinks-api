@@ -25,20 +25,29 @@ public class SpringbootDrinksApiApplication {
         return args -> {
             Ingredient ingredient = new Ingredient(
                     "Vodka",
-                    "Vodka boi",
-                    "spirit"
+                    "Vodka is a distilled beverage composed primarily of water and ethanol.",
+                    "Vodka"
+            );
+            Ingredient ingredient1 = new Ingredient(
+                    "Schweppes Russchian",
+                    "Schweppes but make it Russchian",
+                    "Schweppes"
             );
 
             Drink drink = new Drink(
-                    "Vodka sec",
-                    "lol.com",
-                    "lolo.com",
+                    "Vodka Russian",
+                    "https://www.thecocktaildb.com/images/media/drink/rpttur1454515129.jpg",
+                    "https://www.youtube.com/watch?v=Z0zqXFpuolw",
                     true,
-                    "Nope"
+                    "Mix it as a ordinary drink."
             );
 
             drink.addIngredient(new DrinkIngredient(
-                    drink, ingredient, "oz", (double) 10
+                    drink, ingredient, "oz", (double) 2
+            ));
+
+            drink.addIngredient(new DrinkIngredient(
+                    drink, ingredient1, "oz", (double) 4
             ));
 
             drinkRepository.save(drink);
