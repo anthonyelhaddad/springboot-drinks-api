@@ -9,16 +9,18 @@ public class DrinkCreateRequest implements Serializable {
     private String videoUrl;
     private boolean isAlcoholic;
     private String instructions;
+    private String description;
     private List<IngredientInfo> ingredients;
 
     public DrinkCreateRequest(String name, String imageUrl, String videoUrl, boolean isAlcoholic,
-                              String instructions, List<IngredientInfo> ingredients) {
+                              String instructions, List<IngredientInfo> ingredients, String description) {
         this.name = name;
         this.imageUrl = imageUrl;
         this.videoUrl = videoUrl;
         this.isAlcoholic = isAlcoholic;
         this.instructions = instructions;
         this.ingredients = ingredients;
+        this.description = description;
     }
 
     public String getName() {
@@ -67,5 +69,13 @@ public class DrinkCreateRequest implements Serializable {
 
     public void setIngredients(List<IngredientInfo> ingredients) {
         this.ingredients = ingredients;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

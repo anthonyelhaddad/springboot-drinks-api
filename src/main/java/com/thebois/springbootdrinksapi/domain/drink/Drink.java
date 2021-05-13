@@ -70,6 +70,13 @@ public class Drink extends RepresentationModel<Drink> {
     )
     private String instructions;
 
+    @Column(
+            name = "description",
+            nullable = false,
+            columnDefinition = "TEXT"
+    )
+    private String description;
+
     @OneToMany(
             cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
             mappedBy = "drink"
@@ -81,12 +88,13 @@ public class Drink extends RepresentationModel<Drink> {
 
     }
 
-    public Drink(String name, String imageUrl, String videoUrl, boolean isAlcoholic, String instructions) {
+    public Drink(String name, String imageUrl, String videoUrl, boolean isAlcoholic, String instructions, String description) {
         this.name = name;
         this.imageUrl = imageUrl;
         this.videoUrl = videoUrl;
         this.isAlcoholic = isAlcoholic;
         this.instructions = instructions;
+        this.description = description;
     }
 
     public Long getId() {
@@ -137,6 +145,14 @@ public class Drink extends RepresentationModel<Drink> {
         return drinkIngredients;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public void setDrinkIngredients(List<DrinkIngredient> drinkIngredients) {
         this.drinkIngredients = drinkIngredients;
     }
@@ -163,6 +179,8 @@ public class Drink extends RepresentationModel<Drink> {
                 ", videoUrl='" + videoUrl + '\'' +
                 ", isAlcoholic=" + isAlcoholic +
                 ", instructions='" + instructions + '\'' +
+                ", description='" + description + '\'' +
+                ", drinkIngredients=" + drinkIngredients +
                 '}';
     }
 }

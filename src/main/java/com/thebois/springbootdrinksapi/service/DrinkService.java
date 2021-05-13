@@ -38,7 +38,8 @@ public class DrinkService {
                 drinkCreateRequest.getImageUrl(),
                 drinkCreateRequest.getVideoUrl(),
                 drinkCreateRequest.isAlcoholic(),
-                drinkCreateRequest.getInstructions()
+                drinkCreateRequest.getInstructions(),
+                drinkCreateRequest.getDescription()
         );
 
         List<DrinkIngredient> drinkIngredientList = new ArrayList<>();

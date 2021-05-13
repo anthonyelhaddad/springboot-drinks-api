@@ -14,6 +14,7 @@ public class DrinkResponse implements Serializable {
     private String videoUrl;
     private boolean isAlcoholic;
     private String instructions;
+    private String description;
     private List<DrinkIngredientElement> drinkIngredientElements = new ArrayList<>();
 
     public DrinkResponse(Drink drink) {
@@ -23,6 +24,7 @@ public class DrinkResponse implements Serializable {
         videoUrl = drink.getVideoUrl();
         isAlcoholic = drink.getIsAlcoholic();
         instructions = drink.getInstructions();
+        description = drink.getDescription();
 
         List<DrinkIngredient> drinkIngredientList = drink.getDrinkIngredients();
         for (DrinkIngredient drinkIngredient: drinkIngredientList) {
@@ -84,5 +86,13 @@ public class DrinkResponse implements Serializable {
 
     public void setDrinkIngredientElements(List<DrinkIngredientElement> drinkIngredientElements) {
         this.drinkIngredientElements = drinkIngredientElements;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
