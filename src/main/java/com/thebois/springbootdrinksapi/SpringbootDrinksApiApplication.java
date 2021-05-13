@@ -16,41 +16,4 @@ public class SpringbootDrinksApiApplication {
     public static void main(String[] args) {
         SpringApplication.run(SpringbootDrinksApiApplication.class, args);
     }
-
-    @Bean
-    CommandLineRunner commandLineRunner(
-            IngredientRepository ingredientRepository,
-            DrinkRepository drinkRepository
-            ) {
-        return args -> {
-            Ingredient ingredient = new Ingredient(
-                    "Vodka",
-                    "Vodka is a distilled beverage composed primarily of water and ethanol.",
-                    "Vodka"
-            );
-            Ingredient ingredient1 = new Ingredient(
-                    "Schweppes Russchian",
-                    "Schweppes but make it Russchian",
-                    "Schweppes"
-            );
-
-            Drink drink = new Drink(
-                    "Vodka Russian",
-                    "https://www.thecocktaildb.com/images/media/drink/rpttur1454515129.jpg",
-                    "https://www.youtube.com/watch?v=Z0zqXFpuolw",
-                    true,
-                    "Mix it as a ordinary drink."
-            );
-
-            drink.addIngredient(new DrinkIngredient(
-                    drink, ingredient, "oz", (double) 2
-            ));
-
-            drink.addIngredient(new DrinkIngredient(
-                    drink, ingredient1, "oz", (double) 4
-            ));
-
-            drinkRepository.save(drink);
-        };
-    }
 }
