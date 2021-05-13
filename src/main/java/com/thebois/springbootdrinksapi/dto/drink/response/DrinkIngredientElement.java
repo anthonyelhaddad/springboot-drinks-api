@@ -1,4 +1,4 @@
-package com.thebois.springbootdrinksapi.response.drink;
+package com.thebois.springbootdrinksapi.dto.drink.response;
 
 import com.thebois.springbootdrinksapi.domain.DrinkIngredient;
 import com.thebois.springbootdrinksapi.domain.Ingredient;

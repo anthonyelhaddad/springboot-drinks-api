@@ -1,14 +1,14 @@
 package com.thebois.springbootdrinksapi.api.rest;
 
 import com.thebois.springbootdrinksapi.domain.Drink;
-import com.thebois.springbootdrinksapi.response.drink.DrinkResponse;
+import com.thebois.springbootdrinksapi.dto.drink.response.DrinkResponse;
 import com.thebois.springbootdrinksapi.service.DrinkService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-import com.thebois.springbootdrinksapi.request.drink.DrinkCreateRequest;
+import com.thebois.springbootdrinksapi.dto.drink.request.DrinkCreateRequest;
 
 import java.util.List;
 

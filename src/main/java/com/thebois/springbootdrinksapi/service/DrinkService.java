@@ -8,8 +8,8 @@ import com.thebois.springbootdrinksapi.domain.Ingredient;
 import com.thebois.springbootdrinksapi.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.thebois.springbootdrinksapi.request.drink.DrinkCreateRequest;
-import com.thebois.springbootdrinksapi.request.drink.IngredientInfo;
+import com.thebois.springbootdrinksapi.dto.drink.request.DrinkCreateRequest;
+import com.thebois.springbootdrinksapi.dto.drink.request.IngredientInfo;
 
 import java.util.ArrayList;
 import java.util.List;

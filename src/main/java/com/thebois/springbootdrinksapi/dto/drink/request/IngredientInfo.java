@@ -1,4 +1,4 @@
-package com.thebois.springbootdrinksapi.request.drink;
+package com.thebois.springbootdrinksapi.dto.drink.request;
 
 import java.io.Serializable;
 
