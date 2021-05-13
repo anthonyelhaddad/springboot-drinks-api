@@ -1,7 +1,7 @@
 package com.thebois.springbootdrinksapi.api.rest;
 
-import com.thebois.springbootdrinksapi.domain.Drink;
-import com.thebois.springbootdrinksapi.domain.Ingredient;
+import com.thebois.springbootdrinksapi.domain.drink.Drink;
+import com.thebois.springbootdrinksapi.domain.ingredient.Ingredient;
 import com.thebois.springbootdrinksapi.service.IngredientService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +39,7 @@ public class IngredientController extends AbstractRestHandler {
     @GetMapping(path = "{ingredientId}", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public Ingredient getIngredient(@PathVariable("ingredientId") Long id) {
-        return ingredientService.getIngredientById(id);
+        return ingredientService.getIngredientById(id).addLinks();
     }
 
     @GetMapping(path = "{ingredientId}/drinks", produces = MediaType.APPLICATION_JSON_VALUE)
