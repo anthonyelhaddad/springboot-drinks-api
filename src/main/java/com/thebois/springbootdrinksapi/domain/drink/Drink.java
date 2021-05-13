@@ -71,7 +71,7 @@ public class Drink extends RepresentationModel<Drink> {
     private String instructions;
 
     @OneToMany(
-            cascade = {CascadeType.PERSIST},
+            cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
             mappedBy = "drink"
     )
     @JsonIgnore

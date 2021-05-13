@@ -47,7 +47,14 @@ public class DrinkController extends AbstractRestHandler {
     }
 
     @GetMapping(path = "search", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.OK)
     public List<Drink> search(@RequestParam String q) {
         return drinkService.search(q);
+    }
+
+    @DeleteMapping(path = "{drinkId}")
+    @ResponseStatus(HttpStatus.OK)
+    public void deleteDrinkById(@PathVariable("drinkId") Long id){
+        drinkService.deleteDrinkById(id);
     }
 }
