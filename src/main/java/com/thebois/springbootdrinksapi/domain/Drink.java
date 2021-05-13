@@ -64,7 +64,7 @@ public class Drink {
     private String instructions;
 
     @OneToMany(
-            cascade = {CascadeType.PERSIST},
+            cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
             mappedBy = "drink"
     )
     @JsonIgnore

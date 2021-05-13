@@ -44,4 +44,8 @@ public class IngredientService {
         return ingredient.getDrinkIngredients()
                 .stream().map(DrinkIngredient::getDrink).collect(Collectors.toList());
     }
+
+    public void deleteIngredientById(Long id){
+        ingredientRepository.deleteById(id);
+    }
 }
