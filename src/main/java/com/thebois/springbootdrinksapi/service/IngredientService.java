@@ -4,9 +4,12 @@ import com.thebois.springbootdrinksapi.dao.jpa.IngredientRepository;
 import com.thebois.springbootdrinksapi.domain.drink.Drink;
 import com.thebois.springbootdrinksapi.domain.DrinkIngredient;
 import com.thebois.springbootdrinksapi.domain.ingredient.Ingredient;
+import com.thebois.springbootdrinksapi.dto.drink.request.DrinkCreateRequest;
+import com.thebois.springbootdrinksapi.dto.drink.request.IngredientInfo;
 import com.thebois.springbootdrinksapi.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -47,5 +50,16 @@ public class IngredientService {
 
     public void deleteIngredientById(Long id){
         ingredientRepository.deleteById(id);
+    }
+
+    @Transactional
+    public void updateIngredient(Long id, Ingredient newIngredient) {
+        Ingredient ingredient = ingredientRepository.findById(id)
+                .orElseThrow(() -> new IllegalStateException("Ingredient " + id + " does not exist"));
+
+        ingredient.setName(newIngredient.getName());
+        ingredient.setDescription(newIngredient.getDescription());
+        ingredient.setType(newIngredient.getType());
+
     }
 }
