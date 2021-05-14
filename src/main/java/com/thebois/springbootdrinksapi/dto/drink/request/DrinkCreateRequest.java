@@ -78,4 +78,6 @@ public class DrinkCreateRequest implements Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
+
+
 }

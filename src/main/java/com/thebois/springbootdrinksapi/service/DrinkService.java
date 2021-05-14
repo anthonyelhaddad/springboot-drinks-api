@@ -10,9 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.thebois.springbootdrinksapi.dto.drink.request.DrinkCreateRequest;
 import com.thebois.springbootdrinksapi.dto.drink.request.IngredientInfo;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -68,5 +70,19 @@ public class DrinkService {
 
     public void deleteDrinkById(Long id){
         drinkRepository.deleteById(id);
+    }
+
+    @Transactional
+    public void updateDrink(Long drinkId, DrinkCreateRequest drinkCreateRequest) {
+        Drink drink = drinkRepository.findById(drinkId)
+                .orElseThrow(() -> new IllegalStateException("Drink " + drinkId + " does not exist"));
+
+        drink.setName(drinkCreateRequest.getName());
+        drink.setImageUrl(drinkCreateRequest.getImageUrl());
+        drink.setVideoUrl(drinkCreateRequest.getVideoUrl());
+        drink.setIsAlcoholic(drinkCreateRequest.isAlcoholic());
+        drink.setInstructions(drinkCreateRequest.getInstructions());
+        drink.setDescription(drinkCreateRequest.getDescription());
+
     }
 }

@@ -1,5 +1,6 @@
 package com.thebois.springbootdrinksapi.api.rest;
 
+import com.thebois.springbootdrinksapi.domain.DrinkIngredient;
 import com.thebois.springbootdrinksapi.domain.drink.Drink;
 import com.thebois.springbootdrinksapi.dto.drink.response.DrinkResponse;
 import com.thebois.springbootdrinksapi.service.DrinkService;
@@ -60,4 +61,13 @@ public class DrinkController extends AbstractRestHandler {
     public void deleteDrinkById(@PathVariable("drinkId") Long id){
         drinkService.deleteDrinkById(id);
     }
+
+    @PutMapping(path = "{drinkId}", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.OK)
+    @ApiOperation(value = "Update a drink")
+    public void updateDrinkById(@PathVariable("drinkId") Long id,
+                                @RequestBody DrinkCreateRequest drinkCreateRequest){
+        drinkService.updateDrink(id, drinkCreateRequest);
+    }
+
 }
