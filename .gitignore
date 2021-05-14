@@ -34,3 +34,4 @@ build/
 
 src/main/resources/application.properties.example
 src/main/resources/application.elephant.properties
+src/main/resources/application.properties
